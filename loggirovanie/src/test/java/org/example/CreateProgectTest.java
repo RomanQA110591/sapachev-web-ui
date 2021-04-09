@@ -6,6 +6,10 @@ import java.awt.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import org.example.helpers.ScreenshotMaker;
 import org.junit.Assert;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
@@ -36,16 +40,19 @@ import static org.example.common.Configuration.STUDENT_PASSWORD;
 
 @ExtendWith(TimingExtension.class)
 
-public class CreateProgect extends BasePage {
+
+@Feature("CreateProgect")
+@Severity(SeverityLevel.BLOCKER)
+public class CreateProgectTest extends BasePage {
     private static final String LOGIN_PAGE_URL = "https://crm.geekbrains.space/user/login";
     private static final String STUDENT_LOGIN = "Applanatest";
     private static final String STUDENT_PASSWORD = "Student2020!";
     private static final WebDriver driver;
 
 
-    private static Logger logger = LoggerFactory.getLogger(CreateProgect.class);
+    private static Logger logger = LoggerFactory.getLogger(CreateProgectTest.class);
 
-    public CreateProgect(WebDriver driver) {
+    public CreateProgectTest(WebDriver driver) {
         super(driver);
     }
 
@@ -81,6 +88,7 @@ public class CreateProgect extends BasePage {
             driver.get("https://crm.geekbrains.space/user/login");
             LoginPage loginPage = new LoginPage(driver);
             loginPage.login(STUDENT_LOGIN, STUDENT_PASSWORD);
+            ScreenshotMaker.makeScreenshot(driver,"login.jpg");
         }
 
 
